@@ -30,7 +30,7 @@
 
         .container {
             width: 100%;
-            max-width: 450px; /* Largura ideal para visualização no Instagram/Mobile */
+            max-width: 450px; 
             padding: 40px 20px;
             text-align: center;
         }
@@ -61,7 +61,6 @@
             line-height: 1.5;
         }
 
-        /* Espaçamento para o vídeo */
         .video-section {
             margin-bottom: 35px;
             border-radius: 12px;
@@ -70,7 +69,7 @@
         }
 
         .cta-section {
-            margin-top: 20px;
+            margin: 20px 0;
         }
 
         .cta-section h3 {
@@ -78,7 +77,6 @@
             margin-bottom: 20px;
         }
 
-        /* Botão WhatsApp Estilo Aprendiz de Sucesso */
         .btn-whatsapp {
             display: inline-block;
             background-color: var(--verde-projeto);
@@ -89,161 +87,71 @@
             font-weight: 900;
             font-size: 1.1rem;
             box-shadow: 0 4px 15px rgba(155, 200, 54, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease;
             width: 100%;
+            cursor: pointer;
         }
 
         .btn-whatsapp:hover {
             transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(155, 200, 54, 0.6);
         }
 
-        /* --- CÓDIGO DO VÍDEO (REPLICADO CONFORME SOLICITADO) --- */
-        #vsl-container {
+        /* --- Efeito de Pulso na Imagem --- */
+        .image-container {
+            margin: 40px 0;
             position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .pulsing-image {
+            width: 100%;
             max-width: 100%;
-            height: auto;
-        }
-
-        .video-wrapper {
+            border-radius: 15px;
             position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-        }
-
-        #player-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        #player {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        #contextBlocker {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 3;
-            pointer-events: auto;
-        }
-
-        .overlay-audio, .overlay-pause {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            z-index: 4;
-            flex-direction: column;
-            font-family: sans-serif;
-        }
-
-        .overlay-audio {
-            background: transparent;
-        }
-
-        .audio-content {
-            background: #4564FF;
-            padding: 30px;
-            border: solid 2px white;
-            border-radius: 16px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            max-width: 300px;
-            width: 100%;
-            animation: fadeIn 0.8s ease;
-        }
-
-        .audio-content p {
-            margin: 8px 0;
-            color: white;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .icon-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .volume-video {
-            width: 100px;
-            height: 100px;
-            border-radius: 8px;
-            pointer-events: none;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .overlay-pause {
-            display: none;
-            background-color: transparent;
-        }
-
-        .pause-play-button {
-            width: 90px;
-            height: 90px;
-            background: #4564FFE0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        .pause-play-button:hover {
-            background: #4564FF;
-            transform: scale(1.05);
-        }
-
-        .pause-icon {
-            margin-right: -2px;
-            width: 32px;
-            height: 32px;
-        }
-
-        .progress-bar {
-            height: 6px;
-            background: white;
-            width: 0%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
             z-index: 2;
-            transition: width 0.2s ease;
+            display: block;
         }
 
-        iframe[src*="youtube.com"]::after {
-            content: "";
+        .pulse-effect {
             position: absolute;
-            top: 0; right: 0;
-            width: 60px; height: 60px;
-            background: transparent;
-            z-index: 10;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 90%;
+            background-color: var(--verde-projeto);
+            border-radius: 15px;
+            z-index: 1;
+            animation: pulse-minimal 2.5s infinite ease-in-out;
+            filter: blur(15px);
+            opacity: 0.3;
         }
+
+        @keyframes pulse-minimal {
+            0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.2; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.2; }
+        }
+
+        /* --- ESTILOS DO VÍDEO (ORIGINAIS) --- */
+        #vsl-container { position: relative; max-width: 100%; height: auto; }
+        .video-wrapper { position: relative; width: 100%; padding-top: 56.25%; }
+        #player-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        #player { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        #contextBlocker { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; pointer-events: auto; }
+        .overlay-audio, .overlay-pause { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; text-align: center; z-index: 4; flex-direction: column; font-family: sans-serif; }
+        .overlay-audio { background: transparent; }
+        .audio-content { background: #4564FF; padding: 30px; border: solid 2px white; border-radius: 16px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); display: flex; flex-direction: column; align-items: center; cursor: pointer; max-width: 300px; width: 100%; animation: fadeIn 0.8s ease; }
+        .audio-content p { margin: 8px 0; color: white; font-size: 1.2em; font-weight: bold; text-align: center; }
+        .icon-container { display: flex; justify-content: center; align-items: center; }
+        .volume-video { width: 100px; height: 100px; border-radius: 8px; pointer-events: none; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .overlay-pause { display: none; background-color: transparent; }
+        .pause-play-button { width: 90px; height: 90px; background: #4564FFE0; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(0, 0, 0, 0.25); cursor: pointer; transition: background 0.3s ease, transform 0.2s ease; }
+        .pause-play-button:hover { background: #4564FF; transform: scale(1.05); }
+        .pause-icon { margin-right: -2px; width: 32px; height: 32px; }
+        .progress-bar { height: 6px; background: white; width: 0%; position: absolute; bottom: 0; left: 0; z-index: 2; transition: width 0.2s ease; }
     </style>
 </head>
 <body>
@@ -254,11 +162,10 @@
     </header>
 
     <section class="headline">
-        <h2>Transforme seu futuro com educação empreendedora</h2>
-        <p>Assista ao vídeo abaixo para entender como você pode decolar sua carreira em 2027.</p>
+        <h2>Transforme seu futuro agora</h2>
+        <p>Aprenda. Empreenda. Realize o seu projeto em 2027.</p>
     </section>
 
-    <!-- Implementação Exata do seu Código de Vídeo -->
     <section class="video-section">
         <div id="vsl-container">
           <div class="video-wrapper">
@@ -266,33 +173,20 @@
               <div id="player"></div>
               <div id="contextBlocker"></div>
             </div>
-
-            <!-- Overlay de áudio -->
             <div class="overlay-audio" id="audioOverlay">
               <div class="audio-content" id="unmuteBtn">
                 <p>Clique aqui</p>
                 <div class="icon-container">
-                  <video
-                    src="https://zeph.com.br/wp-content/uploads/2025/06/21volume.mp4"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    class="volume-video"
-                  ></video>
+                  <video src="https://zeph.com.br/wp-content/uploads/2025/06/21volume.mp4" autoplay muted loop playsinline class="volume-video"></video>
                 </div>
                 <p>para ativar o som</p>
               </div>
             </div>
-
-            <!-- Overlay de pausa com botão de play -->
             <div class="overlay-pause" id="pauseOverlay">
               <div id="resumeBtn" class="pause-play-button">
                 <img src="https://zeph.com.br/wp-content/uploads/2025/06/play-button-arrowhead.svg" class="pause-icon" />
               </div>
             </div>
-
-            <!-- Barra de progresso -->
             <div class="progress-bar" id="progressBar"></div>
           </div>
         </div>
@@ -300,14 +194,25 @@
 
     <section class="cta-section">
         <h3>Venha fazer parte 2027</h3>
-        <a href="https://wa.me/5512991599185?text=Olá!%20Tenho%20interesse%20no%20projeto%20Aprendiz%20de%20Sucesso%202027.%20Pode%20me%20ajudar?" class="btn-whatsapp" target="_blank">
-            QUERO COMEÇAR AGORA
+        <a href="https://wa.me/5512991599185?text=Olá!%20Tenho%20interesse%20no%20projeto%20Aprendiz%20de%20Sucesso%202027." class="btn-whatsapp" target="_blank">
+            QUERO ME INSCREVER AGORA
+        </a>
+    </section>
+
+    <div class="image-container">
+        <div class="pulse-effect"></div>
+        <img src="https://res.cloudinary.com/dxpygpngo/image/upload/v1777484972/0660c1a4-d589-4ae3-8dfd-78c2807b4cca_xqn7jv.png" alt="Transforme seu Futuro" class="pulsing-image">
+    </div>
+
+    <section class="cta-section">
+        <a href="https://wa.me/5512991599185?text=Olá!%20Vi%20a%20oportunidade%20para%202027%20e%20quero%20começar." class="btn-whatsapp" target="_blank">
+            GARANTIR MINHA VAGA EM 2027
         </a>
     </section>
 </div>
 
 <script>
-    // Scripts do Player de Vídeo Original
+    // SCRIPT ORIGINAL DO PLAYER (SEM ALTERAÇÕES)
     let tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.body.appendChild(tag);
@@ -316,7 +221,7 @@
 
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        videoId: 'VrvsXzg1_zs',
+        videoId: 'Wl4JTfAN91Q',
         playerVars: {
           'autoplay': 1,
           'controls': 0,
@@ -372,23 +277,13 @@
     }
 
     const blocker = document.getElementById("contextBlocker");
-
-    blocker.addEventListener("contextmenu", function (e) {
-      e.preventDefault();
-    });
-
+    blocker.addEventListener("contextmenu", function (e) { e.preventDefault(); });
     blocker.addEventListener("click", function () {
       const state = player.getPlayerState();
-      if (state === YT.PlayerState.PLAYING) {
-        player.pauseVideo();
-      } else {
-        player.playVideo();
-      }
+      if (state === YT.PlayerState.PLAYING) { player.pauseVideo(); } else { player.playVideo(); }
     });
 
-    document.addEventListener('contextmenu', function (e) {
-      e.preventDefault();
-    });
+    document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 </script>
 
 </body>
